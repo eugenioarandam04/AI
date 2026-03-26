@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAWGEN | Legal and Economic Guidance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-block">
+        <p class="eyebrow">Legal Intelligence for Everyday Decisions</p>
+        <div class="brand-row">
+          <div class="logo-mark">L</div>
+          <div>
+            <div class="logo">LAWGEN</div>
+            <p class="brand-copy">Lease, credit, and default-interest tools with a live AI legal explainer.</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-btn active" data-target="home">Home</button>
+        <button class="nav-btn" data-target="lease">Lease Analysis</button>
+        <button class="nav-btn" data-target="credit">Credit Calculator</button>
+        <button class="nav-btn" data-target="moratory">Default Interest</button>
+        <button class="nav-btn" data-target="assistant">AI Assistant</button>
+        <button class="nav-btn" data-target="about">About Us</button>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <section id="home" class="module active hero-panel">
+        <div class="hero-grid">
+          <div>
+            <p class="section-tag">Guided understanding</p>
+            <h1>Contracts and debts are emotional. Your tools should meet you there.</h1>
+            <p class="lead">
+              LAWGEN pairs calculators with guided legal-economic explanations so users can understand results,
+              spot negotiation points, and approach contracts with more clarity.
+            </p>
+            <div class="hero-actions">
+              <button class="btn-primary jump-btn" data-target="lease">Start Lease Analysis</button>
+              <button class="btn-ghost jump-btn" data-target="assistant">Meet the Assistant</button>
+            </div>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="stat-card">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Core legal-financial tools</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-value">1</span>
+              <span class="stat-label">Assistant experience currently paused</span>
+            </div>
+            <div class="stat-card accent">
+              <span class="stat-value">Soon</span>
+              <span class="stat-label">A fuller assistant experience can be reintroduced later</span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="home-grid">
+          <article class="card" data-target="lease">
+            <div class="card-icon">Lease</div>
+            <h3>Analysis of Lease Contract</h3>
+            <p>Evaluate responsibilities, financial pressure points, and negotiation opportunities before you sign.</p>
+          </article>
+          <article class="card" data-target="credit">
+            <div class="card-icon">Credit</div>
+            <h3>Calculator of a Credit</h3>
+            <p>Project total cost, interest burden, and monthly payment so users can see the true borrowing picture.</p>
+          </article>
+          <article class="card" data-target="moratory">
+            <div class="card-icon">Default</div>
+            <h3>Calculator of Default Interest</h3>
+            <p>Understand debt growth, penalty timing, and how delayed payment changes the final obligation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="lease" class="module">
+        <div class="module-heading">
+          <div>
+            <p class="section-tag">Housing</p>
+            <h2>Analysis of Lease Contract</h2>
+          </div>
+          <p class="module-intro">A lease defines payment obligations, duration, and control over the property. This tool helps surface the economic tradeoffs and practical risks inside those clauses.</p>
+        </div>
+
+        <form id="lease-form">
+          <div class="form-section">
+            <h3>Common Lease Information</h3>
+            <div class="form-grid">
+              <label class="input-group">
+                <span>Monthly Rent Payment ($)</span>
+                <input type="number" id="lease-rent" min="0" required>
+              </label>
+              <label class="input-group">
+                <span>Deposit Amount ($)</span>
+                <input type="number" id="lease-deposit" min="0" required>
+              </label>
+              <label class="input-group">
+                <span>Lease Term (Months)</span>
+                <input type="number" id="lease-term" min="1" required>
+              </label>
+              <label class="input-group">
+                <span>Monthly Maintenance Fee ($)</span>
+                <input type="number" id="lease-maint" min="0" required>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Responsibilities and Clauses</h3>
+            <div class="form-grid">
+              <label class="input-group">
+                <span>Is the term negotiable?</span>
+                <select id="lease-negotiable">
+                  <option value="yes">Yes</option>
+                  <option value="no">No (Strict)</option>
+                </select>
+              </label>
+              <label class="input-group">
+                <span>Late Payment Penalty ($)</span>
+                <input type="number" id="lease-late" min="0" required>
+              </label>
+              <label class="input-group">
+                <span>Automatic Renewal?</span>
+                <select id="lease-renew">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+              <label class="input-group">
+                <span>Is Subletting Allowed?</span>
+                <select id="lease-sublet">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="button" class="btn-primary" id="lease-submit">Generate Analysis</button>
+            <button type="reset" class="btn-secondary" data-reset-target="lease-report">Clear</button>
+          </div>
+        </form>
+
+        <div id="lease-report" class="result-panel">
+          <div class="result-header">
+            <div>
+              <p class="section-tag">Executive view</p>
+              <h3>Lease Report</h3>
+            </div>
+            <p id="lease-summary" class="result-summary"></p>
+          </div>
+
+          <div class="pro-con-grid">
+            <div class="pros result-card">
+              <h4>Pros for the Tenant</h4>
+              <ul id="lease-pros" class="custom-list"></ul>
+            </div>
+            <div class="cons result-card">
+              <h4>Risks and Watchouts</h4>
+              <ul id="lease-cons" class="custom-list"></ul>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <h4>Suggested Negotiation Points</h4>
+            <p id="lease-negotiations"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="credit" class="module">
+        <div class="module-heading">
+          <div>
+            <p class="section-tag">Borrowing</p>
+            <h2>Calculator of a Credit</h2>
+          </div>
+          <p class="module-intro">Credit brings cash forward in time, but interest sets the real price. This calculator translates the contract into a clearer long-term cost.</p>
+        </div>
+
+        <form id="credit-form">
+          <div class="form-section">
+            <div class="form-grid">
+              <label class="input-group">
+                <span>Loan Amount ($)</span>
+                <input type="number" id="credit-amount" min="0" required>
+              </label>
+              <label class="input-group">
+                <span>Annual Interest Rate (%)</span>
+                <input type="number" id="credit-rate" min="0" step="0.01" required>
+              </label>
+              <label class="input-group">
+                <span>Number of Payments</span>
+                <input type="number" id="credit-payments" min="1" required>
+              </label>
+              <label class="input-group">
+                <span>Term Length (Years)</span>
+                <input type="number" id="credit-term" min="0.1" step="0.1" required>
+              </label>
+              <label class="input-group">
+                <span>Type of Interest</span>
+                <select id="credit-type">
+                  <option value="simple">Simple Interest</option>
+                  <option value="compound">Compound Interest</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="button" class="btn-primary" id="credit-submit">Generate Analysis</button>
+            <button type="reset" class="btn-secondary" data-reset-target="credit-report">Clear</button>
+          </div>
+        </form>
+
+        <div id="credit-report" class="result-panel">
+          <div class="result-header">
+            <div>
+              <p class="section-tag">Economic view</p>
+              <h3>Credit Report</h3>
+            </div>
+            <p class="result-summary">A fast snapshot of what the agreement costs over time.</p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric">
+              <span>Total Amount to be Paid</span>
+              <strong>$<span id="res-credit-total"></span></strong>
+            </div>
+            <div class="metric">
+              <span>Total Interest Paid</span>
+              <strong>$<span id="res-credit-interest"></span></strong>
+            </div>
+            <div class="metric">
+              <span>Approximate Monthly Payment</span>
+              <strong>$<span id="res-credit-monthly"></span></strong>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <h4>Brief Economic Analysis</h4>
+            <p id="res-credit-analysis"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="moratory" class="module">
+        <div class="module-heading">
+          <div>
+            <p class="section-tag">Late payment</p>
+            <h2>Calculator of Default Interest</h2>
+          </div>
+          <p class="module-intro">Default interest compensates delay and increases pressure over time. This tool breaks down how a rate turns into added debt.</p>
+        </div>
+
+        <form id="moratory-form">
+          <div class="form-section">
+            <div class="form-grid">
+              <label class="input-group">
+                <span>Original Debt Amount ($)</span>
+                <input type="number" id="mor-debt" min="0" required>
+              </label>
+              <label class="input-group">
+                <span>Default Interest Rate (%)</span>
+                <input type="number" id="mor-rate" min="0" step="0.01" required>
+              </label>
+              <label class="input-group">
+                <span>Rate Calculated Period</span>
+                <select id="mor-period">
+                  <option value="monthly">Monthly</option>
+                  <option value="semester">Semesterly</option>
+                  <option value="annually">Annually</option>
+                </select>
+              </label>
+              <label class="input-group">
+                <span>Days Passed Since Default</span>
+                <input type="number" id="mor-days" min="0" required>
+              </label>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="button" class="btn-primary" id="moratory-submit">Generate Analysis</button>
+            <button type="reset" class="btn-secondary" data-reset-target="moratory-report">Clear</button>
+          </div>
+        </form>
+
+        <div id="moratory-report" class="result-panel">
+          <div class="result-header">
+            <div>
+              <p class="section-tag">Debt pressure</p>
+              <h3>Default Interest Report</h3>
+            </div>
+            <p class="result-summary">A plain-language explanation of how lateness becomes additional liability.</p>
+          </div>
+
+          <div class="metrics-grid">
+            <div class="metric">
+              <span>Interest Generated to Date</span>
+              <strong>$<span id="res-mor-interest"></span></strong>
+            </div>
+            <div class="metric">
+              <span>Total Amount Due Now</span>
+              <strong>$<span id="res-mor-total"></span></strong>
+            </div>
+          </div>
+
+          <div class="result-card">
+            <h4>Calculation Explanation</h4>
+            <p id="res-mor-explanation"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="assistant" class="module">
+        <div class="module-heading">
+          <div>
+            <p class="section-tag">Live AI support</p>
+            <h2>LAWGEN Assistant</h2>
+          </div>
+            <p class="module-intro">The assistant area remains in the interface as a future feature, but live AI responses are currently unavailable in this shareable version.</p>
+        </div>
+
+        <div class="assistant-layout">
+          <aside class="assistant-sidebar">
+            <div class="assistant-card">
+              <h3>Current Status</h3>
+              <p>This public version is intentionally static so it can be shared with a simple link and used without any backend setup.</p>
+            </div>
+            <div class="assistant-card">
+              <h3>What Still Works</h3>
+              <ul class="custom-list">
+                <li>Lease analysis with negotiation watchouts</li>
+                <li>Credit cost calculation and affordability framing</li>
+                <li>Default-interest breakdown in plain language</li>
+              </ul>
+            </div>
+            <div class="assistant-card assistant-state">
+              <span class="state-dot" id="assistant-status-dot"></span>
+              <div>
+                <strong id="assistant-status-label">Assistant offline</strong>
+                <p id="assistant-status-copy">Live AI is disabled in this static version for easier sharing and safer distribution.</p>
+              </div>
+            </div>
+          </aside>
+
+          <div class="assistant-panel">
+            <div class="assistant-offline">
+              <p class="offline-badge">Out of Service</p>
+              <h3>Live AI responses are not available right now.</h3>
+              <p>
+                To keep this version easy to open from any browser, the assistant has been disabled.
+                Users can still rely on the calculators and written explanations across the rest of LAWGEN.
+              </p>
+              <div class="offline-notes">
+                <div class="result-card">
+                  <h4>Why it is paused</h4>
+                  <p>A real chatbot requires a backend service and protected API credentials. This version avoids that complexity so it can be shared as a simple static webpage.</p>
+                </div>
+                <div class="result-card">
+                  <h4>Recommended use</h4>
+                  <p>Guide users through the lease, credit, and default-interest modules, then use the generated reports as the main source of explanation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="module">
+        <div class="module-heading">
+          <div>
+            <p class="section-tag">Purpose</p>
+            <h2>About Us</h2>
+          </div>
+          <p class="module-intro">This project was created to make legal and economic concepts easier to approach for both professionals and the wider public.</p>
+        </div>
+
+        <div class="form-section prose-panel">
+          <p>
+            "We are two developers, soon to be qualified lawyers, who identified a need for a system that assists legal professionals and the general public in better understanding their legal position in matters such as leases, credit arrangements, and default interest. We recognize that calculating and interpreting these elements can often be complex and challenging. In response, we developed an application designed to serve as a practical tool in this context. This application was created for educational purposes, with the aim of providing value from both a legal and economic perspective in relation to these matters."
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <div class="result-card">
+            <h3>Leases</h3>
+            <p>Legally, a lease establishes rights and duties. Economically, it allocates risk, mobility, and payment pressure over time.</p>
+          </div>
+          <div class="result-card">
+            <h3>Credit</h3>
+            <p>Loan agreements are contracts, but their long-term impact is economic. Interest structure can change whether a deal is useful or dangerous.</p>
+          </div>
+          <div class="result-card">
+            <h3>Default Interest</h3>
+            <p>Default interest operates as both penalty and compensation. Knowing how it grows helps debtors prioritize action earlier.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Disclaimer: The service provided by this app does not replace and/or constitute legal advice for any specific matter. It is an educational tool for interpreting information.</p>
+    </footer>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
