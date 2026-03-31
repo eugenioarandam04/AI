@@ -3,418 +3,751 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LAWGEN | Legal and Economic Guidance</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="LAWGEN - Legal & Economic Decision Support Tool">
+  <title>LAWGEN - Legal &amp; Economic Decision Support Tool</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="page-shell">
+  <div class="app-shell">
     <header class="site-header">
-      <div class="brand-block">
-        <p class="eyebrow">Legal Intelligence for Everyday Decisions</p>
-        <div class="brand-row">
-          <div class="logo-mark">L</div>
-          <div>
-            <div class="logo">LAWGEN</div>
-            <p class="brand-copy">Lease, credit, and default-interest tools with a live AI legal explainer.</p>
-          </div>
-        </div>
+      <div class="header-top">
+        <p class="site-kicker">Legal &amp; Economic Decision Support Tool</p>
+        <button class="brand-mark" type="button" data-go-view="home" aria-label="Go to the home page">LAWGEN</button>
       </div>
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <button class="nav-btn active" data-target="home">Home</button>
-        <button class="nav-btn" data-target="lease">Lease Analysis</button>
-        <button class="nav-btn" data-target="credit">Credit Calculator</button>
-        <button class="nav-btn" data-target="moratory">Default Interest</button>
-        <button class="nav-btn" data-target="assistant">AI Assistant</button>
-        <button class="nav-btn" data-target="about">About Us</button>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <button class="nav-link is-active" type="button" data-view-target="home">Home</button>
+        <button class="nav-link" type="button" data-view-target="lease-analysis">Lease Analysis</button>
+        <button class="nav-link" type="button" data-view-target="credit-calculator">Credit Calculator</button>
+        <button class="nav-link" type="button" data-view-target="credit-comparator">Credit Comparator</button>
+        <button class="nav-link" type="button" data-view-target="default-interest">Default Interest</button>
+        <button class="nav-link" type="button" data-view-target="damages-estimator">Damages Estimator</button>
+        <button class="nav-link" type="button" data-view-target="about">About Us</button>
       </nav>
     </header>
 
     <main class="main-content">
-      <section id="home" class="module active hero-panel">
-        <div class="hero-grid">
-          <div>
-            <p class="section-tag">Guided understanding</p>
-            <h1>Contracts and debts are emotional. Your tools should meet you there.</h1>
-            <p class="lead">
-              LAWGEN pairs calculators with guided legal-economic explanations so users can understand results,
-              spot negotiation points, and approach contracts with more clarity.
+      <section class="view is-active" id="view-home" data-view="home">
+        <section class="home-intro">
+          <div class="hero-copy hero-copy--home">
+            <p class="eyebrow">Legal &amp; Economic Decision Support Tool</p>
+            <h1>Understand the economical consequences of legal decisions with more clarity.</h1>
+            <p class="hero-text">
+              LAWGEN is a self-contained educational SPA that helps users translate leases, credit terms,
+              delay interest, and damages estimates into practical, readable outcomes without legal jargon.
             </p>
-            <div class="hero-actions">
-              <button class="btn-primary jump-btn" data-target="lease">Start Lease Analysis</button>
-              <button class="btn-ghost jump-btn" data-target="assistant">Meet the Assistant</button>
-            </div>
+            <p class="hero-text">
+              Built for people who want practical guidance, not technical clutter. Each module gives you a summary,
+              clean numeric results, an expandable detailed breakdown, and a deeper explanation written in plain
+              language so you can understand both the legal and financial consequences.
+            </p>
           </div>
 
-          <aside class="hero-aside">
-            <div class="stat-card">
-              <span class="stat-value">3</span>
-              <span class="stat-label">Core legal-financial tools</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value">1</span>
-              <span class="stat-label">Assistant experience currently paused</span>
-            </div>
-            <div class="stat-card accent">
-              <span class="stat-value">Soon</span>
-              <span class="stat-label">A fuller assistant experience can be reintroduced later</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="home-grid">
-          <article class="card" data-target="lease">
-            <div class="card-icon">Lease</div>
-            <h3>Analysis of Lease Contract</h3>
-            <p>Evaluate responsibilities, financial pressure points, and negotiation opportunities before you sign.</p>
-          </article>
-          <article class="card" data-target="credit">
-            <div class="card-icon">Credit</div>
-            <h3>Calculator of a Credit</h3>
-            <p>Project total cost, interest burden, and monthly payment so users can see the true borrowing picture.</p>
-          </article>
-          <article class="card" data-target="moratory">
-            <div class="card-icon">Default</div>
-            <h3>Calculator of Default Interest</h3>
-            <p>Understand debt growth, penalty timing, and how delayed payment changes the final obligation.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="lease" class="module">
-        <div class="module-heading">
-          <div>
-            <p class="section-tag">Housing</p>
-            <h2>Analysis of Lease Contract</h2>
-          </div>
-          <p class="module-intro">A lease defines payment obligations, duration, and control over the property. This tool helps surface the economic tradeoffs and practical risks inside those clauses.</p>
-        </div>
-
-        <form id="lease-form">
-          <div class="form-section">
-            <h3>Common Lease Information</h3>
-            <div class="form-grid">
-              <label class="input-group">
-                <span>Monthly Rent Payment ($)</span>
-                <input type="number" id="lease-rent" min="0" required>
-              </label>
-              <label class="input-group">
-                <span>Deposit Amount ($)</span>
-                <input type="number" id="lease-deposit" min="0" required>
-              </label>
-              <label class="input-group">
-                <span>Lease Term (Months)</span>
-                <input type="number" id="lease-term" min="1" required>
-              </label>
-              <label class="input-group">
-                <span>Monthly Maintenance Fee ($)</span>
-                <input type="number" id="lease-maint" min="0" required>
-              </label>
-            </div>
-          </div>
-
-          <div class="form-section">
-            <h3>Responsibilities and Clauses</h3>
-            <div class="form-grid">
-              <label class="input-group">
-                <span>Is the term negotiable?</span>
-                <select id="lease-negotiable">
-                  <option value="yes">Yes</option>
-                  <option value="no">No (Strict)</option>
-                </select>
-              </label>
-              <label class="input-group">
-                <span>Late Payment Penalty ($)</span>
-                <input type="number" id="lease-late" min="0" required>
-              </label>
-              <label class="input-group">
-                <span>Automatic Renewal?</span>
-                <select id="lease-renew">
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
-              </label>
-              <label class="input-group">
-                <span>Is Subletting Allowed?</span>
-                <select id="lease-sublet">
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <div class="button-group">
-            <button type="button" class="btn-primary" id="lease-submit">Generate Analysis</button>
-            <button type="reset" class="btn-secondary" data-reset-target="lease-report">Clear</button>
-          </div>
-        </form>
-
-        <div id="lease-report" class="result-panel">
-          <div class="result-header">
-            <div>
-              <p class="section-tag">Executive view</p>
-              <h3>Lease Report</h3>
-            </div>
-            <p id="lease-summary" class="result-summary"></p>
-          </div>
-
-          <div class="pro-con-grid">
-            <div class="pros result-card">
-              <h4>Pros for the Tenant</h4>
-              <ul id="lease-pros" class="custom-list"></ul>
-            </div>
-            <div class="cons result-card">
-              <h4>Risks and Watchouts</h4>
-              <ul id="lease-cons" class="custom-list"></ul>
-            </div>
-          </div>
-
-          <div class="result-card">
-            <h4>Suggested Negotiation Points</h4>
-            <p id="lease-negotiations"></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="credit" class="module">
-        <div class="module-heading">
-          <div>
-            <p class="section-tag">Borrowing</p>
-            <h2>Calculator of a Credit</h2>
-          </div>
-          <p class="module-intro">Credit brings cash forward in time, but interest sets the real price. This calculator translates the contract into a clearer long-term cost.</p>
-        </div>
-
-        <form id="credit-form">
-          <div class="form-section">
-            <div class="form-grid">
-              <label class="input-group">
-                <span>Loan Amount ($)</span>
-                <input type="number" id="credit-amount" min="0" required>
-              </label>
-              <label class="input-group">
-                <span>Annual Interest Rate (%)</span>
-                <input type="number" id="credit-rate" min="0" step="0.01" required>
-              </label>
-              <label class="input-group">
-                <span>Number of Payments</span>
-                <input type="number" id="credit-payments" min="1" required>
-              </label>
-              <label class="input-group">
-                <span>Term Length (Years)</span>
-                <input type="number" id="credit-term" min="0.1" step="0.1" required>
-              </label>
-              <label class="input-group">
-                <span>Type of Interest</span>
-                <select id="credit-type">
-                  <option value="simple">Simple Interest</option>
-                  <option value="compound">Compound Interest</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <div class="button-group">
-            <button type="button" class="btn-primary" id="credit-submit">Generate Analysis</button>
-            <button type="reset" class="btn-secondary" data-reset-target="credit-report">Clear</button>
-          </div>
-        </form>
-
-        <div id="credit-report" class="result-panel">
-          <div class="result-header">
-            <div>
-              <p class="section-tag">Economic view</p>
-              <h3>Credit Report</h3>
-            </div>
-            <p class="result-summary">A fast snapshot of what the agreement costs over time.</p>
-          </div>
-
-          <div class="metrics-grid">
-            <div class="metric">
-              <span>Total Amount to be Paid</span>
-              <strong>$<span id="res-credit-total"></span></strong>
-            </div>
-            <div class="metric">
-              <span>Total Interest Paid</span>
-              <strong>$<span id="res-credit-interest"></span></strong>
-            </div>
-            <div class="metric">
-              <span>Approximate Monthly Payment</span>
-              <strong>$<span id="res-credit-monthly"></span></strong>
-            </div>
-          </div>
-
-          <div class="result-card">
-            <h4>Brief Economic Analysis</h4>
-            <p id="res-credit-analysis"></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="moratory" class="module">
-        <div class="module-heading">
-          <div>
-            <p class="section-tag">Late payment</p>
-            <h2>Calculator of Default Interest</h2>
-          </div>
-          <p class="module-intro">Default interest compensates delay and increases pressure over time. This tool breaks down how a rate turns into added debt.</p>
-        </div>
-
-        <form id="moratory-form">
-          <div class="form-section">
-            <div class="form-grid">
-              <label class="input-group">
-                <span>Original Debt Amount ($)</span>
-                <input type="number" id="mor-debt" min="0" required>
-              </label>
-              <label class="input-group">
-                <span>Default Interest Rate (%)</span>
-                <input type="number" id="mor-rate" min="0" step="0.01" required>
-              </label>
-              <label class="input-group">
-                <span>Rate Calculated Period</span>
-                <select id="mor-period">
-                  <option value="monthly">Monthly</option>
-                  <option value="semester">Semesterly</option>
-                  <option value="annually">Annually</option>
-                </select>
-              </label>
-              <label class="input-group">
-                <span>Days Passed Since Default</span>
-                <input type="number" id="mor-days" min="0" required>
-              </label>
-            </div>
-          </div>
-
-          <div class="button-group">
-            <button type="button" class="btn-primary" id="moratory-submit">Generate Analysis</button>
-            <button type="reset" class="btn-secondary" data-reset-target="moratory-report">Clear</button>
-          </div>
-        </form>
-
-        <div id="moratory-report" class="result-panel">
-          <div class="result-header">
-            <div>
-              <p class="section-tag">Debt pressure</p>
-              <h3>Default Interest Report</h3>
-            </div>
-            <p class="result-summary">A plain-language explanation of how lateness becomes additional liability.</p>
-          </div>
-
-          <div class="metrics-grid">
-            <div class="metric">
-              <span>Interest Generated to Date</span>
-              <strong>$<span id="res-mor-interest"></span></strong>
-            </div>
-            <div class="metric">
-              <span>Total Amount Due Now</span>
-              <strong>$<span id="res-mor-total"></span></strong>
-            </div>
-          </div>
-
-          <div class="result-card">
-            <h4>Calculation Explanation</h4>
-            <p id="res-mor-explanation"></p>
-          </div>
-        </div>
-      </section>
-
-      <section id="assistant" class="module">
-        <div class="module-heading">
-          <div>
-            <p class="section-tag">Live AI support</p>
-            <h2>LAWGEN Assistant</h2>
-          </div>
-            <p class="module-intro">The assistant area remains in the interface as a future feature, but live AI responses are currently unavailable in this shareable version.</p>
-        </div>
-
-        <div class="assistant-layout">
-          <aside class="assistant-sidebar">
-            <div class="assistant-card">
-              <h3>Current Status</h3>
-              <p>This public version is intentionally static so it can be shared with a simple link and used without any backend setup.</p>
-            </div>
-            <div class="assistant-card">
-              <h3>What Still Works</h3>
-              <ul class="custom-list">
-                <li>Lease analysis with negotiation watchouts</li>
-                <li>Credit cost calculation and affordability framing</li>
-                <li>Default-interest breakdown in plain language</li>
-              </ul>
-            </div>
-            <div class="assistant-card assistant-state">
-              <span class="state-dot" id="assistant-status-dot"></span>
-              <div>
-                <strong id="assistant-status-label">Assistant offline</strong>
-                <p id="assistant-status-copy">Live AI is disabled in this static version for easier sharing and safer distribution.</p>
-              </div>
-            </div>
-          </aside>
-
-          <div class="assistant-panel">
-            <div class="assistant-offline">
-              <p class="offline-badge">Out of Service</p>
-              <h3>Live AI responses are not available right now.</h3>
+          <aside class="home-intro-aside">
+            <article class="intro-feature-card">
+              <p class="eyebrow">At A Glance</p>
+              <h3>See obligations before they become expensive surprises.</h3>
               <p>
-                To keep this version easy to open from any browser, the assistant has been disabled.
-                Users can still rely on the calculators and written explanations across the rest of LAWGEN.
+                The application is designed to make legal-economic consequences easier to see before a user signs,
+                borrows, delays payment, or estimates a claim.
               </p>
-              <div class="offline-notes">
-                <div class="result-card">
-                  <h4>Why it is paused</h4>
-                  <p>A real chatbot requires a backend service and protected API credentials. This version avoids that complexity so it can be shared as a simple static webpage.</p>
-                </div>
-                <div class="result-card">
-                  <h4>Recommended use</h4>
-                  <p>Guide users through the lease, credit, and default-interest modules, then use the generated reports as the main source of explanation.</p>
-                </div>
+              <p class="intro-tag-caption">Open a module directly from the topics below.</p>
+
+              <div class="intro-tag-grid">
+                <button class="intro-tag" type="button" data-go-view="lease-analysis" aria-label="Open Lease Analysis">Lease pressure</button>
+                <button class="intro-tag" type="button" data-go-view="credit-calculator" aria-label="Open Credit Calculator">Credit burden</button>
+                <button class="intro-tag" type="button" data-go-view="default-interest" aria-label="Open Default Interest">Default growth</button>
+                <button class="intro-tag" type="button" data-go-view="damages-estimator" aria-label="Open Damages Estimator">Damages logic</button>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </article>
+          </aside>
+        </section>
 
-      <section id="about" class="module">
-        <div class="module-heading">
+        <div class="section-heading">
           <div>
-            <p class="section-tag">Purpose</p>
-            <h2>About Us</h2>
+            <p class="eyebrow">Home</p>
+            <h2>One place for structured legal-economic calculations.</h2>
           </div>
-          <p class="module-intro">This project was created to make legal and economic concepts easier to approach for both professionals and the wider public.</p>
-        </div>
-
-        <div class="form-section prose-panel">
-          <p>
-            "We are two developers, soon to be qualified lawyers, who identified a need for a system that assists legal professionals and the general public in better understanding their legal position in matters such as leases, credit arrangements, and default interest. We recognize that calculating and interpreting these elements can often be complex and challenging. In response, we developed an application designed to serve as a practical tool in this context. This application was created for educational purposes, with the aim of providing value from both a legal and economic perspective in relation to these matters."
+          <p class="section-intro">
+            Choose a section below to review lease terms, evaluate borrowing, compare credit structures,
+            estimate default interest, assess damages, or learn the law-and-economics perspective behind the tool.
           </p>
         </div>
 
-        <div class="story-grid">
-          <div class="result-card">
-            <h3>Leases</h3>
-            <p>Legally, a lease establishes rights and duties. Economically, it allocates risk, mobility, and payment pressure over time.</p>
-          </div>
-          <div class="result-card">
-            <h3>Credit</h3>
-            <p>Loan agreements are contracts, but their long-term impact is economic. Interest structure can change whether a deal is useful or dangerous.</p>
-          </div>
-          <div class="result-card">
+        <section class="card-grid" aria-label="Application sections">
+          <button class="module-card" type="button" data-go-view="lease-analysis">
+            <span class="card-kicker">Module 1</span>
+            <h3>Lease Analysis</h3>
+            <p>Review rent, deposit, term, penalties, and flexibility terms to identify practical strengths, risks, and negotiation points.</p>
+          </button>
+
+          <button class="module-card" type="button" data-go-view="credit-calculator">
+            <span class="card-kicker">Module 2</span>
+            <h3>Credit Calculator</h3>
+            <p>Calculate total borrowing cost, interest burden, and installment pressure using simple or compound credit logic.</p>
+          </button>
+
+          <button class="module-card" type="button" data-go-view="credit-comparator">
+            <span class="card-kicker">Module 3</span>
+            <h3>Credit Comparator</h3>
+            <p>Compare two credit options side by side to see where lower payments, longer terms, and additional charges change the real cost.</p>
+          </button>
+
+          <button class="module-card" type="button" data-go-view="default-interest">
+            <span class="card-kicker">Module 4</span>
             <h3>Default Interest</h3>
-            <p>Default interest operates as both penalty and compensation. Knowing how it grows helps debtors prioritize action earlier.</p>
+            <p>Estimate how delayed payment increases a debt over time and understand the financial impact of waiting too long.</p>
+          </button>
+
+          <button class="module-card" type="button" data-go-view="damages-estimator">
+            <span class="card-kicker">Module 5</span>
+            <h3>Damages Estimator</h3>
+            <p>Combine direct loss and lost profit while checking the key legal conditions that usually affect whether damages are recoverable.</p>
+          </button>
+
+          <button class="module-card" type="button" data-go-view="about">
+            <span class="card-kicker">Module 6</span>
+            <h3>About Us</h3>
+            <p>Read the full purpose of LAWGEN and how legal rules connect with economic consequences across the modules.</p>
+          </button>
+        </section>
+      </section>
+
+      <section class="view" id="view-lease-analysis" data-view="lease-analysis">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 1</p>
+            <h2>Lease Analysis</h2>
+          </div>
+          <p class="section-intro">
+            This module converts common lease terms into a balanced review of benefits, risks, and realistic negotiation opportunities.
+          </p>
+        </div>
+
+        <div class="module-layout">
+          <form class="module-form" id="lease-form" novalidate>
+            <div class="form-grid">
+              <label class="field">
+                <span>Rent</span>
+                <input id="lease-rent" name="rent" type="number" min="0" step="0.01" inputmode="decimal" placeholder="1500">
+              </label>
+
+              <label class="field">
+                <span>Deposit</span>
+                <input id="lease-deposit" name="deposit" type="number" min="0" step="0.01" inputmode="decimal" placeholder="1500">
+              </label>
+
+              <label class="field">
+                <span>Term (months)</span>
+                <input id="lease-term" name="term" type="number" min="1" step="1" inputmode="numeric" placeholder="12">
+              </label>
+
+              <label class="field">
+                <span>Maintenance</span>
+                <input id="lease-maintenance" name="maintenance" type="number" min="0" step="0.01" inputmode="decimal" placeholder="125">
+              </label>
+
+              <label class="field">
+                <span>Negotiability</span>
+                <select id="lease-negotiability" name="negotiability">
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Late fee</span>
+                <input id="lease-late-fee" name="lateFee" type="number" min="0" step="0.01" inputmode="decimal" placeholder="75">
+              </label>
+
+              <label class="field">
+                <span>Renewal</span>
+                <select id="lease-renewal" name="renewal">
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Subletting</span>
+                <select id="lease-subletting" name="subletting">
+                  <option value="">Select</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-feedback" id="lease-error" hidden></div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Analyze Lease</button>
+              <button class="secondary-btn" type="button" data-reset-module="lease">Clear</button>
+            </div>
+          </form>
+
+          <section class="analysis-panel" id="lease-results" hidden>
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Summary</p>
+                <h3>Lease Assessment</h3>
+              </div>
+              <button class="info-toggle module-info-button" type="button" data-target="lease-deep-explanation" aria-expanded="false" aria-label="Open deep explanation for lease analysis">ℹ️</button>
+            </div>
+
+            <p class="summary-text" id="lease-summary-text"></p>
+            <div class="deep-explanation" id="lease-deep-explanation" hidden></div>
+            <div class="metrics-grid" id="lease-metrics"></div>
+
+            <div class="dual-grid">
+              <div class="content-block">
+                <div class="content-block-head">
+                  <h4>Pros</h4>
+                  <span class="content-badge content-badge--positive">Balanced positives</span>
+                </div>
+                <div class="insight-list" id="lease-pros-list"></div>
+              </div>
+
+              <div class="content-block">
+                <div class="content-block-head">
+                  <h4>Cons</h4>
+                  <span class="content-badge content-badge--warning">Important cautions</span>
+                </div>
+                <div class="insight-list" id="lease-cons-list"></div>
+              </div>
+            </div>
+
+            <div class="content-block">
+              <div class="content-block-head">
+                <h4>Negotiation Suggestions</h4>
+                <span class="content-badge content-badge--neutral">Concrete requests</span>
+              </div>
+              <div class="insight-list" id="lease-suggestions-list"></div>
+            </div>
+
+            <details class="detail-block">
+              <summary>Detailed Breakdown</summary>
+              <div class="detail-content" id="lease-breakdown"></div>
+            </details>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-credit-calculator" data-view="credit-calculator">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 2</p>
+            <h2>Credit Calculator</h2>
+          </div>
+          <p class="section-intro">
+            This calculator shows what a credit agreement may cost in total and whether the repayment structure appears moderate or aggressive.
+          </p>
+        </div>
+
+        <div class="module-layout">
+          <form class="module-form" id="credit-form" novalidate>
+            <div class="form-grid">
+              <label class="field">
+                <span>Loan</span>
+                <input id="credit-loan" name="loan" type="number" min="0" step="0.01" inputmode="decimal" placeholder="10000">
+              </label>
+
+              <label class="field">
+                <span>Rate (%)</span>
+                <input id="credit-rate" name="rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="7.5">
+              </label>
+
+              <label class="field">
+                <span>Payments</span>
+                <input id="credit-payments" name="payments" type="number" min="1" step="1" inputmode="numeric" placeholder="24">
+              </label>
+
+              <label class="field">
+                <span>Term (years)</span>
+                <input id="credit-term" name="term" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="2">
+              </label>
+
+              <label class="field">
+                <span>Type</span>
+                <select id="credit-type" name="type">
+                  <option value="">Select</option>
+                  <option value="simple">Simple</option>
+                  <option value="compound">Compound</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-feedback" id="credit-error" hidden></div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Calculate Credit</button>
+              <button class="secondary-btn" type="button" data-reset-module="credit">Clear</button>
+            </div>
+          </form>
+
+          <section class="analysis-panel" id="credit-results" hidden>
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Summary</p>
+                <h3>Credit Cost Overview</h3>
+              </div>
+              <button class="info-toggle module-info-button" type="button" data-target="credit-deep-explanation" aria-expanded="false" aria-label="Open deep explanation for credit calculator">ℹ️</button>
+            </div>
+
+            <p class="summary-text" id="credit-summary-text"></p>
+            <div class="deep-explanation" id="credit-deep-explanation" hidden></div>
+            <div class="metrics-grid" id="credit-metrics"></div>
+
+            <div class="dual-grid">
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Is It Expensive?</h4>
+                  <span class="content-badge content-badge--neutral">Cost view</span>
+                </div>
+                <div class="text-card" id="credit-expensive-text"></div>
+              </article>
+
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Is It Aggressive?</h4>
+                  <span class="content-badge content-badge--warning">Payment pressure</span>
+                </div>
+                <div class="text-card" id="credit-aggressive-text"></div>
+              </article>
+            </div>
+
+            <details class="detail-block">
+              <summary>Detailed Breakdown</summary>
+              <div class="detail-content" id="credit-breakdown"></div>
+            </details>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-credit-comparator" data-view="credit-comparator">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 3</p>
+            <h2>Credit Comparator</h2>
+          </div>
+          <p class="section-intro">
+            Compare two loan structures side by side so you can see how term, fees, extras, repayment frequency, and interest type affect the real burden.
+          </p>
+        </div>
+
+        <div class="module-layout">
+          <form class="module-form" id="compare-form" novalidate>
+            <div class="compare-grid">
+              <fieldset class="compare-fieldset">
+                <legend>Option A</legend>
+
+                <label class="field">
+                  <span>Loan</span>
+                  <input id="compare-a-loan" type="number" min="0" step="0.01" inputmode="decimal" placeholder="15000">
+                </label>
+
+                <label class="field">
+                  <span>Rate (%)</span>
+                  <input id="compare-a-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="6.5">
+                </label>
+
+                <label class="field">
+                  <span>Term (years)</span>
+                  <input id="compare-a-term" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="3">
+                </label>
+
+                <label class="field">
+                  <span>Fees</span>
+                  <input id="compare-a-fees" type="number" min="0" step="0.01" inputmode="decimal" placeholder="250">
+                </label>
+
+                <label class="field">
+                  <span>Extras</span>
+                  <input id="compare-a-extras" type="number" min="0" step="0.01" inputmode="decimal" placeholder="180">
+                </label>
+
+                <label class="field">
+                  <span>Frequency</span>
+                  <select id="compare-a-frequency">
+                    <option value="">Select</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="semiannual">Semiannual</option>
+                    <option value="annual">Annual</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Type</span>
+                  <select id="compare-a-type">
+                    <option value="">Select</option>
+                    <option value="simple">Simple</option>
+                    <option value="compound">Compound</option>
+                  </select>
+                </label>
+              </fieldset>
+
+              <fieldset class="compare-fieldset">
+                <legend>Option B</legend>
+
+                <label class="field">
+                  <span>Loan</span>
+                  <input id="compare-b-loan" type="number" min="0" step="0.01" inputmode="decimal" placeholder="15000">
+                </label>
+
+                <label class="field">
+                  <span>Rate (%)</span>
+                  <input id="compare-b-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="5.9">
+                </label>
+
+                <label class="field">
+                  <span>Term (years)</span>
+                  <input id="compare-b-term" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="4">
+                </label>
+
+                <label class="field">
+                  <span>Fees</span>
+                  <input id="compare-b-fees" type="number" min="0" step="0.01" inputmode="decimal" placeholder="150">
+                </label>
+
+                <label class="field">
+                  <span>Extras</span>
+                  <input id="compare-b-extras" type="number" min="0" step="0.01" inputmode="decimal" placeholder="320">
+                </label>
+
+                <label class="field">
+                  <span>Frequency</span>
+                  <select id="compare-b-frequency">
+                    <option value="">Select</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="semiannual">Semiannual</option>
+                    <option value="annual">Annual</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Type</span>
+                  <select id="compare-b-type">
+                    <option value="">Select</option>
+                    <option value="simple">Simple</option>
+                    <option value="compound">Compound</option>
+                  </select>
+                </label>
+              </fieldset>
+            </div>
+
+            <div class="form-feedback" id="compare-error" hidden></div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Compare Credits</button>
+              <button class="secondary-btn" type="button" data-reset-module="compare">Clear</button>
+            </div>
+          </form>
+
+          <section class="analysis-panel" id="compare-results" hidden>
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Summary</p>
+                <h3>Comparison Results</h3>
+              </div>
+              <button class="info-toggle module-info-button" type="button" data-target="compare-deep-explanation" aria-expanded="false" aria-label="Open deep explanation for credit comparator">ℹ️</button>
+            </div>
+
+            <p class="summary-text" id="compare-summary-text"></p>
+            <div class="deep-explanation" id="compare-deep-explanation" hidden></div>
+
+            <div class="table-wrap">
+              <table class="compare-table">
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Total Cost</th>
+                    <th>Interest</th>
+                    <th>Payment</th>
+                    <th>Fees</th>
+                  </tr>
+                </thead>
+                <tbody id="compare-table-body"></tbody>
+              </table>
+            </div>
+
+            <div class="visual-block">
+              <div class="content-block-head">
+                <h4>Visual Cost Bars</h4>
+                <span class="content-badge content-badge--neutral">CSS only</span>
+              </div>
+              <div class="bar-stack" id="compare-bars"></div>
+            </div>
+
+            <div class="dual-grid">
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Key Findings</h4>
+                  <span class="content-badge content-badge--positive">Decision signals</span>
+                </div>
+                <div class="analysis-chip-grid" id="compare-findings"></div>
+              </article>
+
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Interpretation</h4>
+                  <span class="content-badge content-badge--warning">Tradeoff view</span>
+                </div>
+                <div class="text-card" id="compare-interpretation"></div>
+              </article>
+            </div>
+
+            <details class="detail-block">
+              <summary>Detailed Breakdown</summary>
+              <div class="detail-content" id="compare-breakdown"></div>
+            </details>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-default-interest" data-view="default-interest">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 4</p>
+            <h2>Default Interest</h2>
+          </div>
+          <p class="section-intro">
+            Estimate how much additional money a delayed payment can generate once interest for non-payment begins to accrue.
+          </p>
+        </div>
+
+        <div class="module-layout">
+          <form class="module-form" id="default-form" novalidate>
+            <div class="form-grid">
+              <label class="field">
+                <span>Days</span>
+                <input id="default-days" type="number" min="1" step="1" inputmode="numeric" placeholder="45">
+              </label>
+
+              <label class="field">
+                <span>Rate (%)</span>
+                <input id="default-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="8">
+              </label>
+
+              <label class="field">
+                <span>Frequency</span>
+                <select id="default-frequency">
+                  <option value="">Select</option>
+                  <option value="daily">Daily</option>
+                  <option value="monthly">Monthly</option>
+                  <option value="quarterly">Quarterly</option>
+                  <option value="annual">Annual</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Debt</span>
+                <input id="default-debt" type="number" min="0" step="0.01" inputmode="decimal" placeholder="6000">
+              </label>
+            </div>
+
+            <div class="form-feedback" id="default-error" hidden></div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Calculate Default Interest</button>
+              <button class="secondary-btn" type="button" data-reset-module="default">Clear</button>
+            </div>
+          </form>
+
+          <section class="analysis-panel" id="default-results" hidden>
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Summary</p>
+                <h3>Delay Cost Overview</h3>
+              </div>
+              <button class="info-toggle module-info-button" type="button" data-target="default-deep-explanation" aria-expanded="false" aria-label="Open deep explanation for default interest">ℹ️</button>
+            </div>
+
+            <p class="summary-text" id="default-summary-text"></p>
+            <div class="deep-explanation" id="default-deep-explanation" hidden></div>
+            <div class="metrics-grid" id="default-metrics"></div>
+
+            <div class="dual-grid">
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Why It Grows</h4>
+                  <span class="content-badge content-badge--neutral">Time effect</span>
+                </div>
+                <div class="text-card" id="default-growth-text"></div>
+              </article>
+
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Impact of Delay</h4>
+                  <span class="content-badge content-badge--warning">Practical effect</span>
+                </div>
+                <div class="text-card" id="default-impact-text"></div>
+              </article>
+            </div>
+
+            <details class="detail-block">
+              <summary>Detailed Breakdown</summary>
+              <div class="detail-content" id="default-breakdown"></div>
+            </details>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-damages-estimator" data-view="damages-estimator">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 5</p>
+            <h2>Damages Estimator</h2>
+          </div>
+          <p class="section-intro">
+            Estimate potential damages while checking the legal conditions that usually influence whether a loss is actually recoverable.
+          </p>
+        </div>
+
+        <div class="module-layout">
+          <form class="module-form" id="damages-form" novalidate>
+            <div class="form-grid">
+              <label class="field">
+                <span>Direct loss</span>
+                <input id="damages-direct" type="number" min="0" step="0.01" inputmode="decimal" placeholder="8500">
+              </label>
+
+              <label class="field">
+                <span>Lost profit</span>
+                <input id="damages-profit" type="number" min="0" step="0.01" inputmode="decimal" placeholder="4200">
+              </label>
+            </div>
+
+            <div class="checkbox-grid">
+              <label class="check-item">
+                <input id="damages-causation" type="checkbox">
+                <span>Causation exists</span>
+              </label>
+
+              <label class="check-item">
+                <input id="damages-foreseeable" type="checkbox">
+                <span>Foreseeable</span>
+              </label>
+
+              <label class="check-item">
+                <input id="damages-quantifiable" type="checkbox">
+                <span>Quantifiable</span>
+              </label>
+
+              <label class="check-item">
+                <input id="damages-evidence" type="checkbox">
+                <span>Evidence exists</span>
+              </label>
+            </div>
+
+            <div class="form-feedback" id="damages-error" hidden></div>
+
+            <div class="form-actions">
+              <button class="primary-btn" type="submit">Estimate Damages</button>
+              <button class="secondary-btn" type="button" data-reset-module="damages">Clear</button>
+            </div>
+          </form>
+
+          <section class="analysis-panel" id="damages-results" hidden>
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Summary</p>
+                <h3>Damages Assessment</h3>
+              </div>
+              <button class="info-toggle module-info-button" type="button" data-target="damages-deep-explanation" aria-expanded="false" aria-label="Open deep explanation for damages estimator">ℹ️</button>
+            </div>
+
+            <div class="warning-card" id="damages-warning" hidden></div>
+            <p class="summary-text" id="damages-summary-text"></p>
+            <div class="deep-explanation" id="damages-deep-explanation" hidden></div>
+            <div class="metrics-grid" id="damages-metrics"></div>
+
+            <div class="dual-grid">
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>Explanation</h4>
+                  <span class="content-badge content-badge--neutral">Legal relevance</span>
+                </div>
+                <div class="text-card" id="damages-explanation-text"></div>
+              </article>
+
+              <article class="content-block">
+                <div class="content-block-head">
+                  <h4>What This Means for You</h4>
+                  <span class="content-badge content-badge--warning">Practical use</span>
+                </div>
+                <div class="text-card" id="damages-impact-text"></div>
+              </article>
+            </div>
+
+            <details class="detail-block">
+              <summary>Detailed Breakdown</summary>
+              <div class="detail-content" id="damages-breakdown"></div>
+            </details>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-about" data-view="about">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 6</p>
+            <h2>About Us</h2>
           </div>
         </div>
+
+        <article class="about-panel about-story">
+          <div class="about-banner">
+            <section class="about-banner-card">
+              <span class="about-kicker">Shared Mission</span>
+              <p>We are two future qualified lawyers who identified a need for a system that assists both legal professionals and the general public in better understanding their legal position in matters such as leases, credit arrangements, and default interest. We recognize that calculating and interpreting these elements can often be complex and challenging.</p>
+            </section>
+
+            <section class="about-banner-card about-banner-card--soft">
+              <span class="about-kicker">Purpose</span>
+              <p>In response, we developed this application as a practical tool to simplify these processes. The app is designed for educational purposes and aims to provide users with meaningful insights from both a legal and an economic perspective.</p>
+            </section>
+          </div>
+
+          <section class="about-bridge">
+            <span class="about-kicker">Law And Economics</span>
+            <p>From a law and economics standpoint, the app’s functions reflect the connection between legal rules and their financial consequences:</p>
+          </section>
+
+          <div class="about-grid">
+            <article class="about-topic about-topic--lease">
+              <p><span class="about-topic-label">Lease Analysis:</span> Legal provisions define the rights and obligations within the lease, including duration, payment terms, and conditions. Economics helps assess the overall financial burden, including rent, deposits, and additional costs over time.</p>
+            </article>
+
+            <article class="about-topic about-topic--credit">
+              <p><span class="about-topic-label">Credit Analysis and Comparator:</span> The law establishes the terms of borrowing, repayment obligations, and enforceability, while economics evaluates interest rates, total cost of credit, and financial sustainability. The comparator further allows users to assess which option is more efficient or suitable based on their circumstances.</p>
+            </article>
+
+            <article class="about-topic about-topic--default">
+              <p><span class="about-topic-label">Default Interest:</span> Legal rules govern when default interest applies and how it is calculated. Economics explains how such interest accumulates over time and increases the total amount owed, highlighting the financial consequences of non-compliance.</p>
+            </article>
+
+            <article class="about-topic about-topic--damages">
+              <p><span class="about-topic-label">Damages Estimator:</span> The law determines the conditions under which damages may be claimed and the types of losses that may be recoverable. Economics assists in quantifying those losses by distinguishing between direct and indirect damages and estimating their potential impact.</p>
+            </article>
+          </div>
+
+          <section class="about-closing">
+            <span class="about-kicker">Why It Matters</span>
+            <p>By combining these perspectives, the app enables users to understand not only the legal structure of their obligations but also their practical and financial implications.</p>
+          </section>
+        </article>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Disclaimer: The service provided by this app does not replace and/or constitute legal advice for any specific matter. It is an educational tool for interpreting information.</p>
+      Disclaimer: This tool is for educational purposes only and does not constitute legal advice.
     </footer>
   </div>
 
-  <script src="./app.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
